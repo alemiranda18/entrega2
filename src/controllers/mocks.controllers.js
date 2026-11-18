@@ -14,7 +14,11 @@ export const seed = async (req, res, next) => {
         // qty por query (?qty=10) o por body ({ "qty": 10 }); sin qty usa el default
         const qty = req.query.qty ?? req.body?.qty
         const inserted = await mockService.seed(qty)
-        res.status(201).json({ status: "success", payload: inserted })
+        res.status(201).json({
+            status: "success",
+            insertados: inserted.insertados,
+            coleccion: inserted.coleccion
+        })
     } catch (error) {
         next(error)
     }

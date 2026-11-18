@@ -1,5 +1,5 @@
 import { generateMockUsers } from "../mocks/user.mock.js";
-import { userRepository } from "../repository/user.repository.js";
+import { userRepository } from "../repository/user.Repository.js";
 import { AppError } from "../utils/errors.js";
 
 
@@ -36,7 +36,8 @@ export const mockService = {
         const createdUsers = await userRepository.insertMany(generateMockUsers(parsedQty))
 
         return {
-            users: createdUsers.length
+            insertados: createdUsers.length,
+            coleccion: "usuarios"
         }
     }
 }
